@@ -1,0 +1,12 @@
+fastapi==0.78.0
+uvicorn==0.18.2
+pip-compile-multi==2.4.5
+python-dotenv==0.20.0
+
+
+
+
+
+
+
+
