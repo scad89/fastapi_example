@@ -1,16 +1,11 @@
-from email.policy import default
-from psycopg2 import Date
-from sqlalchemy import Boolean, Column, DateTime, Integer, String
 from core.db import Base
+from datetime import datetime
+from sqlalchemy import Column, DateTime, Integer, String
 
 
 class User(Base):
-    __tablename__ = "users"
+    __tablename__ = "user"
 
     id = Column(Integer, primary_key=True, index=True, unique=True)
-    name = Column(String, unique=True)
-    email = Column(String, unique=True)
-    password = Column(String)
-    date = (DateTime)
-    is_active = Column(Boolean, default=False)
-    is_admin = Column(Boolean, default=False)
+    email = Column(String(30), nullable=False, unique=True)
+    psw = Column(String(300), nullable=False)

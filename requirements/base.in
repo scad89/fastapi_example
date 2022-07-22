@@ -1,5 +1,6 @@
 alembic==1.8.1
-fastapi==0.78.0
+fastapi==0.79.0
+fastapi-login==1.8.2
 uvicorn==0.18.2
 pip-compile-multi==2.4.5
 python-dotenv==0.20.0
