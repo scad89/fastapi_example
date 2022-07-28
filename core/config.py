@@ -1,18 +1,15 @@
-import os
+from distutils.command.config import config
+from starlette.config import Config
 
-from dotenv import load_dotenv
 
-load_dotenv()
+config = Config('.env')
 
 
 class Config(object):
-    DEBUG = os.environ.get("DEBUG")
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL')
-    RESET_TOKEN = os.environ.get("RESET_TOKEN")
-    VERIFICATION_TOKEN = os.environ.get("VERIFICATION_TOKEN")
-    # LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
-    # LOGFILE = "logs/logs.log"
-    # LOG_BACKTRACE = True
-    # LOG_LEVEL = 'DEBUG'
+    DEBUG = config("DEBUG", cast=bool)
+    SECRET_KEY = config('SECRET_KEY', cast=str)
+    SQLALCHEMY_DATABASE_URI = config('DATABASE_URL', cast=str)
+    RESET_TOKEN = config("RESET_TOKEN", cast=str)
+    VERIFICATION_TOKEN = config("VERIFICATION_TOKEN", cast=str)
+    ACCESS_TOKEN_EXPIRE_MINUTES = config("ACCESS_TOKEN_EXPIRE_MINUTES", cast=int)
+    ALGORITHM = "HS256"

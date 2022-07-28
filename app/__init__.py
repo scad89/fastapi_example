@@ -1,25 +1,18 @@
 from fastapi import FastAPI
-from starlette.responses import Response
-from starlette.requests import Request
-from core.db import SessionLocal
-from app.microblog.views.views import api
-from app.users.views.views import user
+from core.db import metadata, engine
+from app.jobs.jb_models import jobs
+from app.users.us_models import users
+from .users.us_endpoint import user
+from .auth.auth_endpoint import auth
+from .jobs.jb_endpoint import job
 
 
 def create_app():
-    app = FastAPI()
+    app = FastAPI(title="Test Project")
+    metadata.create_all(bind=engine)
 
-    @app.middleware("http")
-    async def db_session_middleware(request: Request, call_next):
-        response = Response("Internal server error", status_code=500)
-        try:
-            request.state.db = SessionLocal()
-            response = await call_next(request)
-        finally:
-            request.state.db.close()
-        return response
-
-    app.include_router(api, prefix="/blog")
-    app.include_router(user, prefix="/user")
+    app.include_router(auth, prefix="/auth", tags=["auth"])
+    app.include_router(user, prefix="/users", tags=["users"])
+    app.include_router(job, prefix="/job", tags=["job"])
 
     return app
