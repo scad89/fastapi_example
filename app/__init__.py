@@ -9,7 +9,7 @@ from .jobs.jb_endpoint import job
 
 def create_app():
     app = FastAPI(title="Test Project")
-    metadata.create_all(bind=engine)
+    # metadata.create_all(bind=engine)
 
     app.include_router(auth, prefix="/auth", tags=["auth"])
     app.include_router(user, prefix="/users", tags=["users"])
