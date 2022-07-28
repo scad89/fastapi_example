@@ -1,8 +1,19 @@
 alembic==1.8.1
-fastapi==0.78.0
+bcrypt==3.2.2
+ecdsa==0.18.0
+databases==0.6.0
+databases[postgresql]
+dnspython==2.2.1
+email-validator==1.2.1
+fastapi==0.79.0
+fastapi-login==1.8.2
 uvicorn==0.18.2
+passlib==1.7.4
 pip-compile-multi==2.4.5
+pyasn1==0.4.8
 python-dotenv==0.20.0
+python-jose==3.3.0
 psycopg2-binary==2.9.3
+rsa==4.9
 sqlalchemy==1.4.39
 

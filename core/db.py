@@ -1,21 +1,13 @@
-import os
+from sqlalchemy import create_engine, MetaData
+from databases import Database
 
-from dotenv import load_dotenv
-# import databases
-
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base    # DeclarativeMeta
-from sqlalchemy.orm import sessionmaker
-
-load_dotenv()
+from core.config import Config
 
 
-SQLALCHEMY_DATABASE_URL = os.environ.get('DATABASE_URL')
+SQLALCHEMY_DATABASE_URL = Config.SQLALCHEMY_DATABASE_URI
 
+database = Database(SQLALCHEMY_DATABASE_URL)
+metadata = MetaData()
 engine = create_engine(
-    SQLALCHEMY_DATABASE_URL,  # , connect_args={"check_same_thread": False
+    SQLALCHEMY_DATABASE_URL
 )
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
-# database = databases.Database(SQLALCHEMY_DATABASE_URL)
-# Base: DeclarativeMeta = declarative_base()
