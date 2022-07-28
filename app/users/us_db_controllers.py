@@ -35,7 +35,7 @@ class UserRepository(BaseRepository):
 
     async def update(self, id: int, u: UserIn) -> User:
         user = User(
-            id=id,    # user.id = await не делаем, так как ест ьв самом начале
+            id=id,    # user.id = await не делаем, так как есть в самом начале
             name=u.name,
             email=u.email,
             hashed_password=hash_password(u.password2),
