@@ -1,5 +1,5 @@
 sand
 text
 my_test
-requirements/base.*
 *.pyc
+.env
