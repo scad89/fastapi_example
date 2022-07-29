@@ -14,4 +14,4 @@ RUN chmod +x entrypoint.sh
 COPY ./ .
 
 RUN chmod +x /fastapi_example//entrypoint.sh
-ENTRYPOINT [ "/fastapi_example/entrypoint.sh" ]
+ENTRYPOINT ["/fastapi_example/entrypoint.sh"]
